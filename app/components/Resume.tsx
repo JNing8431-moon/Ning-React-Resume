@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay } from "lucide-react";
+import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, Phone } from "lucide-react";
 
 export default function Resume() {
     const fadeInUp = {
@@ -23,33 +24,64 @@ export default function Resume() {
             <div className="max-w-4xl mx-auto space-y-24">
 
                 {/* Header Section */}
+                {/* Header Section */}
                 <motion.header
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0"
+                    className="flex flex-col md:flex-row gap-8 items-start md:items-center"
                 >
-                    <div>
-                        <h1 className="text-5xl font-bold tracking-tight text-teal-400">Ning</h1>
-                        <p className="text-xl text-slate-400 mt-2">Software Engineering Intern | Backend & VR Development</p>
-                        <p className="mt-4 max-w-lg text-slate-300 leading-relaxed">
+                    {/* Profile Image */}
+                    <div className="relative w-32 h-32 md:w-40 md:h-40 shrink-0">
+                        <div className="absolute inset-0 bg-teal-500 blur-2xl opacity-20 rounded-full"></div>
+                        <Image
+                            src="/photo.jpg"
+                            alt="Profile"
+                            width={160}
+                            height={160}
+                            className="rounded-full border-2 border-teal-500/30 object-cover shadow-2xl"
+                        />
+                    </div>
+
+                    <div className="flex-1 space-y-4">
+                        <div>
+                            <h1 className="text-5xl font-bold tracking-tight text-teal-400">Ning</h1>
+                            <p className="text-xl text-slate-400 mt-2">Software Engineering Intern | Backend & VR Development</p>
+                        </div>
+
+                        <div className="flex flex-wrap gap-4 text-sm text-slate-400">
+                            <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
+                                <MapPin className="w-4 h-4 text-teal-400" />
+                                <span>Current live at Kuala Lumpur Setapak, Malaysia</span>
+                            </div>
+                            <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
+                                <Phone className="w-4 h-4 text-teal-400" />
+                                <span>+60 11-5500 5497</span>
+                            </div>
+                            <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
+                                <span className="w-4 h-4 flex items-center justify-center text-teal-400 font-bold text-xs">Languages</span>
+                                <span>English, Mandarin, Malay</span>
+                            </div>
+                        </div>
+
+                        <p className="max-w-xl text-slate-300 leading-relaxed">
                             Computer Science undergraduate with hands-on experience in backend development,
                             ERP system implementation, and interactive software projects. Passionate about
                             building efficient systems, APIs, and immersive applications using modern tools
                             and frameworks.
                         </p>
-                    </div>
 
-                    <div className="flex gap-4">
-                        <motion.a whileHover={{ scale: 1.1 }} href="https://github.com/JNing8431-moon" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
-                            <Github className="w-6 h-6 text-teal-400" />
-                        </motion.a>
-                        <motion.a whileHover={{ scale: 1.1 }} href="https://www.linkedin.com/in/jning-tan-b7225a286/" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
-                            <Linkedin className="w-6 h-6 text-teal-400" />
-                        </motion.a>
-                        <motion.a whileHover={{ scale: 1.1 }} href="mailto:jning8431@gmail.com" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
-                            <Mail className="w-6 h-6 text-teal-400" />
-                        </motion.a>
+                        <div className="flex gap-4 pt-2">
+                            <motion.a whileHover={{ scale: 1.1 }} href="https://github.com/JNing8431-moon" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
+                                <Github className="w-6 h-6 text-teal-400" />
+                            </motion.a>
+                            <motion.a whileHover={{ scale: 1.1 }} href="https://www.linkedin.com/in/jning-tan-b7225a286/" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
+                                <Linkedin className="w-6 h-6 text-teal-400" />
+                            </motion.a>
+                            <motion.a whileHover={{ scale: 1.1 }} href="mailto:jning8431@gmail.com" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
+                                <Mail className="w-6 h-6 text-teal-400" />
+                            </motion.a>
+                        </div>
                     </div>
                 </motion.header>
 
