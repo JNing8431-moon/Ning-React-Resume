@@ -4,6 +4,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle, Cake } from "lucide-react";
 
+const birthYear = 2004;
+const currentYear = new Date().getFullYear();
+const age = currentYear - birthYear;
+
 export default function Resume() {
     const fadeInUp = {
         initial: { opacity: 0, y: 30 },
@@ -78,7 +82,7 @@ export default function Resume() {
                             </a>
                             <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
                                 <Cake className="w-4 h-4 text-teal-400" />
-                                <span>25/08/2004</span>
+                                <span>{age} Years Old</span>
                             </div>
                             <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
                                 <span className="w-4 h-4 flex items-center justify-center text-teal-400 font-bold text-xs">文</span>
