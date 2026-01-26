@@ -11,9 +11,9 @@ export default function Resume() {
             opacity: 1,
             y: 0,
             transition: {
-                type: "spring",
-                damping: 25,
-                stiffness: 120
+                type: "spring" as const,
+                damping: 30,
+                stiffness: 100
             }
         }
     };
@@ -21,7 +21,7 @@ export default function Resume() {
     const staggerContainer = {
         animate: {
             transition: {
-                staggerChildren: 0.15,
+                staggerChildren: 0.12,
                 delayChildren: 0.1
             }
         }
