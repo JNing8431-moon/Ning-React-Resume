@@ -31,7 +31,7 @@ export default function Resume() {
                 >
                     <div>
                         <h1 className="text-5xl font-bold tracking-tight text-teal-400">Ning</h1>
-                        <p className="text-xl text-slate-400 mt-2">Software Developer Intern | Backend & VR Development</p>
+                        <p className="text-xl text-slate-400 mt-2">Software Engineering Intern | Backend & VR Development</p>
                         <p className="mt-4 max-w-lg text-slate-300 leading-relaxed">
                             Computer Science undergraduate with hands-on experience in backend development,
                             ERP system implementation, and interactive software projects. Passionate about
