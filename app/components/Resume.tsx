@@ -52,14 +52,14 @@ export default function Resume() {
                         <div className="flex flex-wrap gap-4 text-sm text-slate-400">
                             <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
                                 <MapPin className="w-4 h-4 text-teal-400" />
-                                <span>Current live at Kuala Lumpur Setapak, Malaysia</span>
+                                <span>Kuala Lumpur Setapak, Malaysia</span>
                             </div>
                             <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
                                 <Phone className="w-4 h-4 text-teal-400" />
                                 <span>+60 11-5500 5497</span>
                             </div>
                             <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
-                                <span className="w-4 h-4 flex items-center justify-center text-teal-400 font-bold text-xs">Languages</span>
+                                <span className="w-4 h-4 flex items-center justify-center text-teal-400 font-bold text-xs">文</span>
                                 <span>English, Mandarin, Malay</span>
                             </div>
                         </div>
