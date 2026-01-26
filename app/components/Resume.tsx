@@ -81,7 +81,7 @@ export default function Resume() {
                                 <span>+60 11-5500 5497</span>
                             </a>
                             <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
-                                <span className="text-teal-400 font-medium">Age:</span>
+                                <span className="text-teal-400 font-medium">Age</span>
                                 <span>{age}</span>
                             </div>
                             <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
