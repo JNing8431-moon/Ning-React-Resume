@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle, Cake } from "lucide-react";
+import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle } from "lucide-react";
 
 const birthYear = 2004;
 const currentYear = new Date().getFullYear();
@@ -81,8 +81,8 @@ export default function Resume() {
                                 <span>+60 11-5500 5497</span>
                             </a>
                             <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
-                                <Cake className="w-4 h-4 text-teal-400" />
-                                <span>{age} Years Old</span>
+                                <span className="text-teal-400 font-medium">Age:</span>
+                                <span>{age}</span>
                             </div>
                             <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
                                 <span className="w-4 h-4 flex items-center justify-center text-teal-400 font-bold text-xs">文</span>
