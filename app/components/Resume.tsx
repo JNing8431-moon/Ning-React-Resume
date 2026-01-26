@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, Phone } from "lucide-react";
+import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, Phone, Cake } from "lucide-react";
 
 export default function Resume() {
     const fadeInUp = {
@@ -57,6 +57,10 @@ export default function Resume() {
                             <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
                                 <Phone className="w-4 h-4 text-teal-400" />
                                 <span>+60 11-5500 5497</span>
+                            </div>
+                            <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
+                                <Cake className="w-4 h-4 text-teal-400" />
+                                <span>25/08/2004</span>
                             </div>
                             <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
                                 <span className="w-4 h-4 flex items-center justify-center text-teal-400 font-bold text-xs">文</span>
