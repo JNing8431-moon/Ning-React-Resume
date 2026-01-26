@@ -338,7 +338,7 @@ export default function Resume() {
                                 <h3 className="text-xl font-medium text-slate-100 group-hover:text-teal-400 transition-colors">
                                     Job Management System (Logistics)
                                 </h3>
-                                <span className="text-sm font-mono text-slate-500">Flutter Mobile Application — University Assignment Project</span>
+                                <span className="text-sm font-mono text-slate-500">Flutter Mobile Application — University Assignment</span>
                             </div>
 
                             <p className="text-slate-400 leading-relaxed mb-4">
