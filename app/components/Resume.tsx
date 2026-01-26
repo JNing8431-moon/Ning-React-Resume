@@ -24,7 +24,6 @@ export default function Resume() {
             <div className="max-w-4xl mx-auto space-y-24">
 
                 {/* Header Section */}
-                {/* Header Section */}
                 <motion.header
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
