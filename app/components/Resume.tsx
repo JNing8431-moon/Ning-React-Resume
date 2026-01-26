@@ -35,7 +35,7 @@ export default function Resume() {
                     <div className="relative w-32 h-32 md:w-40 md:h-40 shrink-0">
                         <div className="absolute inset-0 bg-teal-500 blur-2xl opacity-20 rounded-full"></div>
                         <Image
-                            src="/Ning-React-Resume/photo.jpg"
+                            src="/Ning-React-Resume/public/photo.jpg"
                             alt="Profile"
                             width={160}
                             height={160}
