@@ -32,7 +32,7 @@ export default function Resume() {
                     className="flex flex-col md:flex-row gap-8 items-start md:items-center"
                 >
                     {/* Profile Image */}
-                    <div className="relative w-40 h-40 md:w-56 md:h-56 shrink-0 rounded-full border-[5px] border-white shadow-2xl bg-white p-[5px]">
+                    <div className="relative w-40 h-40 md:w-56 md:h-56 shrink-0 rounded-full border-[2px] border-white shadow-2xl bg-white p-[5px]">
                         <div className="relative w-full h-full rounded-full overflow-hidden">
                             <Image
                                 src="/Ning-React-Resume/photo.webp"
