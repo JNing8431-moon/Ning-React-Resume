@@ -329,6 +329,49 @@ export default function Resume() {
                                 </a>
                             </div>
                         </motion.div>
+
+                        <motion.div
+                            variants={fadeInUp}
+                            className="p-6 bg-slate-800/50 rounded-lg border border-transparent hover:border-teal-500/30 transition-all"
+                        >
+                            <div className="flex flex-col md:flex-row justify-between items-start mb-2 gap-1">
+                                <h3 className="text-xl font-medium text-slate-100 group-hover:text-teal-400 transition-colors">
+                                    Job Management System (Logistics)
+                                </h3>
+                                <span className="text-sm font-mono text-slate-500">Flutter Mobile Project</span>
+                            </div>
+
+                            <p className="text-slate-400 leading-relaxed mb-4">
+                                Developed a Flutter-based mobile application to streamline job management and delivery workflows for part delivery personnel in a workshop environment.
+                            </p>
+
+                            <ul className="list-disc list-inside space-y-1 mb-6 text-slate-400 text-sm">
+                                <li>Designed a real-time delivery schedule interface for tracking order status (Picked Up, En Route, Delivered).</li>
+                                <li>Implemented detailed part request views allowing personnel to verify specifications and quantities before dispatch.</li>
+                                <li>Integrated digital delivery confirmation features, including photo capture and signature submission for verified completion.</li>
+                            </ul>
+
+                            <div className="flex flex-wrap gap-4">
+                                <a
+                                    href="https://github.com/TanJeeSchuan/mobile_assignment.git"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 px-4 py-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700 rounded-md transition-colors text-sm font-medium border border-slate-600"
+                                >
+                                    <Github className="w-4 h-4" />
+                                    View Repository
+                                </a>
+                                <a
+                                    href="https://www.canva.com/design/DAGupFRpA-I/dK2vyVOM61P3mUGB-961PA/edit?utm_content=DAGupFRpA-I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 px-4 py-2 bg-teal-400/10 text-teal-400 hover:bg-teal-400/20 rounded-md transition-colors text-sm font-medium"
+                                >
+                                    <ExternalLink className="w-4 h-4" />
+                                    View Presentation Slides
+                                </a>
+                            </div>
+                        </motion.div>
                     </div>
                 </motion.section>
 
