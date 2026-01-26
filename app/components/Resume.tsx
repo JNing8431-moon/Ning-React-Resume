@@ -47,7 +47,7 @@ export default function Resume() {
                         <motion.a whileHover={{ scale: 1.1 }} href="https://www.linkedin.com/in/jning-tan-b7225a286/" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
                             <Linkedin className="w-6 h-6 text-teal-400" />
                         </motion.a>
-                        <motion.a whileHover={{ scale: 1.1 }} href="#" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
+                        <motion.a whileHover={{ scale: 1.1 }} href="mailto:jning8431@gmail.com" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
                             <Mail className="w-6 h-6 text-teal-400" />
                         </motion.a>
                     </div>
