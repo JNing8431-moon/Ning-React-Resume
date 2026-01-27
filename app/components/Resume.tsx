@@ -9,9 +9,6 @@ const currentYear = new Date().getFullYear();
 const age = currentYear - birthYear;
 
 export default function Resume() {
-    const handleDownload = () => {
-        window.print();
-    };
 
     const fadeInUp = {
         initial: { opacity: 0, y: 30 },
@@ -135,14 +132,15 @@ export default function Resume() {
                                 <Mail className="w-6 h-6 text-teal-400" />
                             </motion.a>
 
-                            <motion.button
+                            <motion.a
                                 whileHover={{ scale: 1.05 }}
-                                onClick={handleDownload}
+                                href="/Ning-React-Resume/RESUME_TAN JIA NING.pdf"
+                                download="RESUME_TAN JIA NING.pdf"
                                 className="flex items-center gap-2 px-6 py-2 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-colors shadow-lg active:scale-95 no-print ml-auto md:ml-0"
                             >
                                 <Download className="w-5 h-5" />
                                 <span className="font-medium text-sm">Download PDF</span>
-                            </motion.button>
+                            </motion.a>
                         </div>
                     </div>
                 </motion.header>
