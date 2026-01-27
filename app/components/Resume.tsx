@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle, Download, Sun, Moon } from "lucide-react";
@@ -17,6 +17,11 @@ export default function Resume() {
         damping: 30,
         restDelta: 0.001
     });
+
+    // Force scroll to top on refresh
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     const fadeInUp = {
         initial: { opacity: 0, y: 30 },
