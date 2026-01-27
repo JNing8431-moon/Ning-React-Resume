@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle, Download, Quote, Send, User } from "lucide-react";
+import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle, Download, Send } from "lucide-react";
 
 const birthYear = 2004;
 const currentYear = new Date().getFullYear();
@@ -409,53 +409,6 @@ export default function Resume() {
                     </div>
                 </motion.section>
 
-                <motion.section
-                    variants={staggerContainer}
-                    initial="initial"
-                    whileInView="animate"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="space-y-12"
-                >
-                    <div className="flex items-center gap-2 mb-4">
-                        <MessageCircle className="w-6 h-6 text-teal-400" />
-                        <h2 className="text-2xl font-semibold text-slate-200">Testimonials</h2>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-8">
-                        {[
-                            {
-                                quote: "Tan is an exceptionally proactive developer who quickly adapts to complex backend environments. Her contributions to our ERP system logic were instrumental in meeting our project milestones.",
-                                author: "Project Lead",
-                                company: "CodeX Studio",
-                                role: "Former Supervisor"
-                            },
-                            {
-                                quote: "A talented developer with a strong grasp of interactive logic. Her work on the VR Eco-Friendly Simulator demonstrated both technical skill and a keen eye for user experience.",
-                                author: "Academic Supervisor",
-                                company: "TARUMT",
-                                role: "Final Year Project"
-                            }
-                        ].map((testi, idx) => (
-                            <motion.div
-                                key={idx}
-                                variants={fadeInUp}
-                                className="relative p-8 bg-slate-800/40 rounded-2xl border border-slate-700/50 hover:border-teal-500/30 transition-all group"
-                            >
-                                <Quote className="absolute top-4 right-4 w-8 h-8 text-teal-500/10 group-hover:text-teal-500/20 transition-colors" />
-                                <p className="text-slate-300 italic mb-6 leading-relaxed relative z-10">"{testi.quote}"</p>
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-teal-400">
-                                        <User className="w-5 h-5" />
-                                    </div>
-                                    <div>
-                                        <h4 className="text-slate-100 font-medium text-sm">{testi.author}</h4>
-                                        <p className="text-slate-500 text-xs">{testi.role} @ {testi.company}</p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.section>
 
                 {/* Contact Section */}
                 <motion.section
