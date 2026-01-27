@@ -299,6 +299,7 @@ export default function Resume() {
                             {
                                 degree: "Bachelor of CS (Honours) in Interactive Software Technology",
                                 institution: "Tunku Abdul Rahman University of Management and Technology (KL Branch)",
+                                link: "https://www.tarc.edu.my/kl/",
                                 period: "July 2024 – June 2026",
                                 highlights: [
                                     "Specialized in game programming, VR, and real-time interactive systems.",
@@ -309,6 +310,7 @@ export default function Resume() {
                             {
                                 degree: "Diploma in Computer Science",
                                 institution: "Tunku Abdul Rahman University of Management and Technology (KL Branch)",
+                                link: "https://www.tarc.edu.my/kl/",
                                 period: "July 2022 – June 2024",
                                 grade: "CGPA: 3.30",
                                 highlights: [
@@ -320,6 +322,7 @@ export default function Resume() {
                             {
                                 degree: "Malaysia Certificate of Education (SPM)",
                                 institution: "Sekolah Menengah Kebangsaan Perlis",
+                                link: "https://old.smjk.my/school/stfdirdd9b.html?schid=6",
                                 period: "2021",
                                 highlights: [
                                     "Pure Science Stream: Achieved 5 As and 4 Bs.",
@@ -338,7 +341,15 @@ export default function Resume() {
                                     </h3>
                                     <span className="text-sm font-mono text-slate-500 whitespace-nowrap">{edu.period}</span>
                                 </div>
-                                <p className="text-lg text-teal-400/80 mb-1">{edu.institution}</p>
+                                <p className="text-lg text-teal-400/80 mb-1">
+                                    {edu.link ? (
+                                        <a href={edu.link} target="_blank" rel="noopener noreferrer" className="hover:text-teal-300 transition-colors underline decoration-teal-400/20 underline-offset-4">
+                                            {edu.institution}
+                                        </a>
+                                    ) : (
+                                        edu.institution
+                                    )}
+                                </p>
                                 {edu.grade && <p className="text-sm text-slate-400 mb-3 font-mono">{edu.grade}</p>}
                                 <ul className="list-disc list-inside space-y-1 mt-3">
                                     {edu.highlights.map((item, i) => (
