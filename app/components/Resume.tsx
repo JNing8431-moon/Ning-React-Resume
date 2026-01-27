@@ -1,28 +1,14 @@
 "use client";
 
-import { useState } from "react";
-
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle, Download, Send } from "lucide-react";
+import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle, Download } from "lucide-react";
 
 const birthYear = 2004;
 const currentYear = new Date().getFullYear();
 const age = currentYear - birthYear;
 
 export default function Resume() {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        message: ""
-    });
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        const subject = `Message from ${formData.name} via Portfolio`;
-        const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-        window.location.href = `mailto:jning8431@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
-    };
 
     const fadeInUp = {
         initial: { opacity: 0, y: 30 },
@@ -424,71 +410,6 @@ export default function Resume() {
                 </motion.section>
 
 
-                {/* Contact Section */}
-                <motion.section
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="space-y-12 py-12"
-                    id="contact"
-                >
-                    <div className="text-center space-y-4">
-                        <h2 className="text-3xl font-bold text-slate-100">Get In Touch</h2>
-                        <p className="text-slate-400 max-w-lg mx-auto">
-                            I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
-                        </p>
-                    </div>
-
-                    <div className="max-w-2xl mx-auto p-8 bg-slate-800/30 rounded-3xl border border-slate-700/50 shadow-2xl backdrop-blur-sm">
-                        <form className="space-y-6" onSubmit={handleSubmit}>
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-sm font-medium text-slate-300 ml-1">Name</label>
-                                    <input
-                                        type="text"
-                                        required
-                                        placeholder="Full Name"
-                                        value={formData.name}
-                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl focus:outline-none focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/50 transition-all text-slate-200 placeholder:text-slate-600 outline-none"
-                                    />
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-sm font-medium text-slate-300 ml-1">Email</label>
-                                    <input
-                                        type="email"
-                                        required
-                                        placeholder="email@example.com"
-                                        value={formData.email}
-                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl focus:outline-none focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/50 transition-all text-slate-200 placeholder:text-slate-600 outline-none"
-                                    />
-                                </div>
-                            </div>
-                            <div className="space-y-2">
-                                <label className="text-sm font-medium text-slate-300 ml-1">Message</label>
-                                <textarea
-                                    rows={4}
-                                    required
-                                    placeholder="Your message..."
-                                    value={formData.message}
-                                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                    className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl focus:outline-none focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/50 transition-all text-slate-200 placeholder:text-slate-600 resize-none outline-none"
-                                />
-                            </div>
-                            <motion.button
-                                type="submit"
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="w-full py-4 bg-teal-500 hover:bg-teal-600 text-white rounded-xl font-semibold shadow-lg shadow-teal-500/20 flex items-center justify-center gap-2 transition-colors no-print"
-                            >
-                                <Send className="w-5 h-5" />
-                                Send Message
-                            </motion.button>
-                        </form>
-                    </div>
-                </motion.section>
                 <motion.footer
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
