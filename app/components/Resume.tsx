@@ -1,14 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { motion, useScroll, useSpring } from "framer-motion";
-import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle, Download } from "lucide-react";
+import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
+import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle, Download, Sun, Moon } from "lucide-react";
 
 const birthYear = 2004;
 const currentYear = new Date().getFullYear();
 const age = currentYear - birthYear;
 
 export default function Resume() {
+    const [isDark, setIsDark] = useState(true);
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
@@ -39,15 +41,37 @@ export default function Resume() {
     };
 
     return (
-        <div className="relative min-h-screen bg-slate-900 text-slate-100 p-8 font-sans selection:bg-teal-500 selection:text-white overflow-hidden">
+        <div className={`relative min-h-screen transition-colors duration-500 ${isDark ? 'bg-slate-900 text-slate-100' : 'bg-slate-50 text-slate-900'} p-8 font-sans selection:bg-teal-500 selection:text-white overflow-hidden`}>
             <motion.div
                 className="fixed top-0 left-0 right-0 h-1 bg-teal-500 origin-left z-[101]"
                 style={{ scaleX }}
             />
+
+            {/* Theme Toggle Button */}
+            <motion.button
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1 }}
+                onClick={() => setIsDark(!isDark)}
+                className={`fixed top-8 right-8 z-[102] p-3 rounded-full shadow-xl transition-all duration-300 no-print ${isDark ? 'bg-slate-800 text-yellow-400 hover:bg-slate-700' : 'bg-white text-slate-700 hover:bg-slate-100'}`}
+            >
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={isDark ? 'dark' : 'light'}
+                        initial={{ opacity: 0, rotate: -90 }}
+                        animate={{ opacity: 1, rotate: 0 }}
+                        exit={{ opacity: 0, rotate: 90 }}
+                        transition={{ duration: 0.2 }}
+                    >
+                        {isDark ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
+                    </motion.div>
+                </AnimatePresence>
+            </motion.button>
+
             {/* Background Decorative Elements */}
             <div className="fixed inset-0 pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-teal-500/10 blur-[120px] rounded-full animate-pulse" />
-                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+                <div className={`absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-teal-500/10 blur-[120px] rounded-full animate-pulse`} />
+                <div className={`absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 blur-[120px] rounded-full animate-pulse`} style={{ animationDelay: '2s' }} />
             </div>
 
             {/* Entrance Reveal Overlay */}
@@ -63,7 +87,7 @@ export default function Resume() {
                 animate={{ scaleY: 0 }}
                 transition={{ duration: 0.8, ease: [0.77, 0, 0.175, 1], delay: 0.1 }}
                 style={{ originY: 0 }}
-                className="fixed inset-0 bg-slate-950 z-[99] pointer-events-none"
+                className={`fixed inset-0 ${isDark ? 'bg-slate-950' : 'bg-slate-200'} z-[99] pointer-events-none`}
             />
 
             <div className="relative max-w-4xl mx-auto space-y-24 z-10">
@@ -77,7 +101,7 @@ export default function Resume() {
                     className="flex flex-col md:flex-row gap-8 items-start md:items-center"
                 >
                     {/* Profile Image */}
-                    <div className="relative w-40 h-40 md:w-56 md:h-56 shrink-0 rounded-full border-[2px] border-white shadow-2xl bg-white p-[5px]">
+                    <div className={`relative w-40 h-40 md:w-56 md:h-56 shrink-0 rounded-full border-[2px] ${isDark ? 'border-white' : 'border-teal-500'} shadow-2xl bg-white p-[5px]`}>
                         <div className="relative w-full h-full rounded-full overflow-hidden">
                             <Image
                                 src="/Ning-React-Resume/photo.webp"
@@ -90,12 +114,12 @@ export default function Resume() {
 
                     <div className="flex-1 space-y-4">
                         <div>
-                            <h1 className="text-5xl font-bold tracking-tight text-teal-400">Ning</h1>
-                            <p className="text-xl text-slate-400 mt-2">Software Engineering Intern | Backend & VR Development</p>
+                            <h1 className={`text-5xl font-bold tracking-tight text-teal-400`}>Ning</h1>
+                            <p className={`text-xl ${isDark ? 'text-slate-400' : 'text-slate-600'} mt-2`}>Software Engineering Intern | Backend & VR Development</p>
                         </div>
 
-                        <div className="flex flex-wrap gap-4 text-sm text-slate-400">
-                            <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
+                        <div className="flex flex-wrap gap-4 text-sm">
+                            <div className={`flex items-center gap-2 ${isDark ? 'bg-slate-800/50 text-slate-400' : 'bg-white shadow-sm text-slate-600'} px-3 py-1.5 rounded-full`}>
                                 <MapPin className="w-4 h-4 text-teal-400" />
                                 <span>Kuala Lumpur Setapak, Malaysia</span>
                             </div>
@@ -103,7 +127,7 @@ export default function Resume() {
                                 href="https://wa.link/zvjw1o"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full hover:bg-slate-800 transition-colors group"
+                                className={`flex items-center gap-2 ${isDark ? 'bg-slate-800/50 text-slate-400 hover:bg-slate-800' : 'bg-white shadow-sm text-slate-600 hover:bg-slate-50'} px-3 py-1.5 rounded-full transition-colors group`}
                             >
                                 <svg
                                     viewBox="0 0 24 24"
@@ -114,17 +138,17 @@ export default function Resume() {
                                 </svg>
                                 <span>+60 11-5500 5497</span>
                             </a>
-                            <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
+                            <div className={`flex items-center gap-2 ${isDark ? 'bg-slate-800/50 text-slate-400' : 'bg-white shadow-sm text-slate-600'} px-3 py-1.5 rounded-full`}>
                                 <span className="text-teal-400 font-medium">Age</span>
                                 <span>{age}</span>
                             </div>
-                            <div className="flex items-center gap-2 bg-slate-800/50 px-3 py-1.5 rounded-full">
+                            <div className={`flex items-center gap-2 ${isDark ? 'bg-slate-800/50 text-slate-400' : 'bg-white shadow-sm text-slate-600'} px-3 py-1.5 rounded-full`}>
                                 <span className="w-4 h-4 flex items-center justify-center text-teal-400 font-bold text-xs">文</span>
                                 <span>English, Mandarin, Malay</span>
                             </div>
                         </div>
 
-                        <p className="max-w-xl text-slate-300 leading-relaxed">
+                        <p className={`max-w-xl ${isDark ? 'text-slate-300' : 'text-slate-700'} leading-relaxed`}>
                             Computer Science undergraduate with hands-on experience in backend development,
                             ERP system implementation, and interactive software projects. Passionate about
                             building efficient systems, APIs, and immersive applications using modern tools
@@ -132,14 +156,14 @@ export default function Resume() {
                         </p>
 
                         <div className="flex flex-wrap gap-4 pt-2 items-center">
-                            <motion.a whileHover={{ scale: 1.1 }} href="https://github.com/JNing8431-moon" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
-                                <Github className="w-6 h-6 text-teal-400" />
+                            <motion.a whileHover={{ scale: 1.1 }} href="https://github.com/JNing8431-moon" target="_blank" rel="noopener noreferrer" className={`p-2 ${isDark ? 'bg-slate-800' : 'bg-white shadow-sm'} rounded-full hover:bg-slate-700 transition-all`}>
+                                <Github className={`w-6 h-6 ${isDark ? 'text-teal-400' : 'text-slate-700'}`} />
                             </motion.a>
-                            <motion.a whileHover={{ scale: 1.1 }} href="https://www.linkedin.com/in/jning-tan-b7225a286/" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
-                                <Linkedin className="w-6 h-6 text-teal-400" />
+                            <motion.a whileHover={{ scale: 1.1 }} href="https://www.linkedin.com/in/jning-tan-b7225a286/" target="_blank" rel="noopener noreferrer" className={`p-2 ${isDark ? 'bg-slate-800' : 'bg-white shadow-sm'} rounded-full hover:bg-slate-700 transition-all`}>
+                                <Linkedin className={`w-6 h-6 ${isDark ? 'text-teal-400' : 'text-slate-700'}`} />
                             </motion.a>
-                            <motion.a whileHover={{ scale: 1.1 }} href="mailto:jning8431@gmail.com" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
-                                <Mail className="w-6 h-6 text-teal-400" />
+                            <motion.a whileHover={{ scale: 1.1 }} href="mailto:jning8431@gmail.com" className={`p-2 ${isDark ? 'bg-slate-800' : 'bg-white shadow-sm'} rounded-full hover:bg-slate-700 transition-all`}>
+                                <Mail className={`w-6 h-6 ${isDark ? 'text-teal-400' : 'text-slate-700'}`} />
                             </motion.a>
 
                             <motion.a
@@ -165,7 +189,7 @@ export default function Resume() {
                 >
                     <div className="flex items-center gap-2 mb-6">
                         <Briefcase className="w-6 h-6 text-teal-400" />
-                        <h2 className="text-2xl font-semibold text-slate-200">Experience</h2>
+                        <h2 className={`text-2xl font-semibold ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>Experience</h2>
                     </div>
 
                     {[
@@ -187,14 +211,14 @@ export default function Resume() {
                         <motion.div
                             key={index}
                             variants={fadeInUp}
-                            className="group p-6 bg-slate-800/50 rounded-lg hover:bg-slate-800 transition-all border border-transparent hover:border-teal-500/30"
+                            className={`group p-6 ${isDark ? 'bg-slate-800/50 hover:bg-slate-800' : 'bg-white shadow-sm hover:shadow-md'} rounded-lg transition-all border border-transparent hover:border-teal-500/30`}
                         >
                             <div className="flex justify-between items-start mb-2">
-                                <h3 className="text-xl font-medium text-slate-100 group-hover:text-teal-400 transition-colors">{job.role}</h3>
+                                <h3 className={`text-xl font-medium ${isDark ? 'text-slate-100' : 'text-slate-900'} group-hover:text-teal-400 transition-colors`}>{job.role}</h3>
                                 <span className="text-sm font-mono text-slate-500">{job.period}</span>
                             </div>
-                            <p className="text-lg text-slate-400 mb-2">{job.company}</p>
-                            <p className="text-slate-400 leading-relaxed">{job.description}</p>
+                            <p className={`text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'} mb-2`}>{job.company}</p>
+                            <p className={`${isDark ? 'text-slate-400' : 'text-slate-600'} leading-relaxed`}>{job.description}</p>
                         </motion.div>
                     ))}
                 </motion.section>
@@ -208,7 +232,7 @@ export default function Resume() {
                 >
                     <div className="flex items-center gap-2 mb-6">
                         <Code className="w-6 h-6 text-teal-400" />
-                        <h2 className="text-2xl font-semibold text-slate-200">Skills</h2>
+                        <h2 className={`text-2xl font-semibold ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>Skills</h2>
                     </div>
 
                     <div className="space-y-6">
@@ -231,14 +255,14 @@ export default function Resume() {
                             }
                         ].map((section, idx) => (
                             <div key={idx}>
-                                <h3 className="text-lg font-medium text-slate-300 mb-3">{section.category}</h3>
+                                <h3 className={`text-lg font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'} mb-3`}>{section.category}</h3>
                                 <div className="flex flex-wrap gap-3">
                                     {section.skills.map((skill, index) => (
                                         <motion.span
                                             key={index}
                                             variants={fadeInUp}
                                             whileHover={{ scale: 1.05 }}
-                                            className="px-4 py-2 bg-teal-400/10 text-teal-300 rounded-full text-sm font-medium border border-teal-400/20"
+                                            className={`px-4 py-2 ${isDark ? 'bg-teal-400/10 text-teal-300' : 'bg-teal-50 text-teal-600'} rounded-full text-sm font-medium border border-teal-400/20`}
                                         >
                                             {skill}
                                         </motion.span>
@@ -258,7 +282,7 @@ export default function Resume() {
                 >
                     <div className="flex items-center gap-2 mb-6">
                         <GraduationCap className="w-6 h-6 text-teal-400" />
-                        <h2 className="text-2xl font-semibold text-slate-200">Education</h2>
+                        <h2 className={`text-2xl font-semibold ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>Education</h2>
                     </div>
                     <div className="space-y-6">
                         {[
@@ -296,10 +320,10 @@ export default function Resume() {
                             <motion.div
                                 key={index}
                                 variants={fadeInUp}
-                                className="p-6 bg-slate-800/50 rounded-lg border border-transparent hover:border-teal-500/30 transition-all"
+                                className={`p-6 ${isDark ? 'bg-slate-800/50' : 'bg-white shadow-sm'} rounded-lg border border-transparent hover:border-teal-500/30 transition-all`}
                             >
                                 <div className="flex flex-col md:flex-row justify-between items-start mb-2 gap-1">
-                                    <h3 className="text-xl font-medium text-slate-100 group-hover:text-teal-400 transition-colors">
+                                    <h3 className={`text-xl font-medium ${isDark ? 'text-slate-100' : 'text-slate-900'} group-hover:text-teal-400 transition-colors`}>
                                         {edu.degree}
                                     </h3>
                                     <span className="text-sm font-mono text-slate-500 whitespace-nowrap">{edu.period}</span>
@@ -308,7 +332,7 @@ export default function Resume() {
                                 {edu.grade && <p className="text-sm text-slate-400 mb-3 font-mono">{edu.grade}</p>}
                                 <ul className="list-disc list-inside space-y-1 mt-3">
                                     {edu.highlights.map((item, i) => (
-                                        <li key={i} className="text-slate-400 text-sm leading-relaxed">
+                                        <li key={i} className={`${isDark ? 'text-slate-400' : 'text-slate-600'} text-sm leading-relaxed`}>
                                             {item}
                                         </li>
                                     ))}
@@ -327,26 +351,26 @@ export default function Resume() {
                 >
                     <div className="flex items-center gap-2 mb-6">
                         <MonitorPlay className="w-6 h-6 text-teal-400" />
-                        <h2 className="text-2xl font-semibold text-slate-200">Projects</h2>
+                        <h2 className={`text-2xl font-semibold ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>Projects</h2>
                     </div>
 
                     <div className="space-y-6">
                         <motion.div
                             variants={fadeInUp}
-                            className="p-6 bg-slate-800/50 rounded-lg border border-transparent hover:border-teal-500/30 transition-all"
+                            className={`p-6 ${isDark ? 'bg-slate-800/50' : 'bg-white shadow-sm'} rounded-lg border border-transparent hover:border-teal-500/30 transition-all`}
                         >
                             <div className="flex flex-col md:flex-row justify-between items-start mb-2 gap-1">
-                                <h3 className="text-xl font-medium text-slate-100 group-hover:text-teal-400 transition-colors">
+                                <h3 className={`text-xl font-medium ${isDark ? 'text-slate-100' : 'text-slate-900'} group-hover:text-teal-400 transition-colors`}>
                                     VR Eco-Friendly Simulator
                                 </h3>
                                 <span className="text-sm font-mono text-slate-500">Final Year Project (2025)</span>
                             </div>
 
-                            <p className="text-slate-400 leading-relaxed mb-4">
+                            <p className={`${isDark ? 'text-slate-400' : 'text-slate-600'} leading-relaxed mb-4`}>
                                 Developed an immersive virtual reality (VR) simulator showcasing sustainable, eco-friendly home designs and energy-efficient living solutions.
                             </p>
 
-                            <ul className="list-disc list-inside space-y-1 mb-6 text-slate-400 text-sm">
+                            <ul className={`list-disc list-inside space-y-1 mb-6 ${isDark ? 'text-slate-400' : 'text-slate-600'} text-sm`}>
                                 <li>Implemented interactive features to educate users on renewable energy, smart home systems, and environmentally responsible material choices.</li>
                                 <li>Built using Unity and VR frameworks, integrating optimized 3D models, intuitive UI/UX, and real-time environmental feedback.</li>
                                 <li>Conducted user testing and performance optimization to ensure smooth VR interaction and high engagement.</li>
@@ -376,20 +400,20 @@ export default function Resume() {
 
                         <motion.div
                             variants={fadeInUp}
-                            className="p-6 bg-slate-800/50 rounded-lg border border-transparent hover:border-teal-500/30 transition-all"
+                            className={`p-6 ${isDark ? 'bg-slate-800/50' : 'bg-white shadow-sm'} rounded-lg border border-transparent hover:border-teal-500/30 transition-all`}
                         >
                             <div className="flex flex-col md:flex-row justify-between items-start mb-2 gap-1">
-                                <h3 className="text-xl font-medium text-slate-100 group-hover:text-teal-400 transition-colors">
+                                <h3 className={`text-xl font-medium ${isDark ? 'text-slate-100' : 'text-slate-900'} group-hover:text-teal-400 transition-colors`}>
                                     Job Management System (Logistics)
                                 </h3>
                                 <span className="text-sm font-mono text-slate-500">Flutter Mobile Application — University Assignment</span>
                             </div>
 
-                            <p className="text-slate-400 leading-relaxed mb-4">
+                            <p className={`${isDark ? 'text-slate-400' : 'text-slate-600'} leading-relaxed mb-4`}>
                                 Developed a Flutter-based mobile application to streamline job management and delivery workflows for part delivery personnel in a workshop environment.
                             </p>
 
-                            <ul className="list-disc list-inside space-y-1 mb-6 text-slate-400 text-sm">
+                            <ul className={`list-disc list-inside space-y-1 mb-6 ${isDark ? 'text-slate-400' : 'text-slate-600'} text-sm`}>
                                 <li>Designed a real-time delivery schedule interface for tracking order status (Picked Up, En Route, Delivered).</li>
                                 <li>Implemented detailed part request views allowing personnel to verify specifications and quantities before dispatch.</li>
                                 <li>Integrated digital delivery confirmation features, including photo capture and signature submission for verified completion.</li>
@@ -400,7 +424,7 @@ export default function Resume() {
                                     href="https://github.com/TanJeeSchuan/mobile_assignment.git"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-4 py-2 bg-slate-700/50 text-slate-300 hover:bg-slate-700 rounded-md transition-colors text-sm font-medium border border-slate-600"
+                                    className={`flex items-center gap-2 px-4 py-2 ${isDark ? 'bg-slate-700/50 text-slate-300' : 'bg-slate-100 text-slate-700'} hover:bg-slate-700 hover:text-white rounded-md transition-colors text-sm font-medium border border-slate-600`}
                                 >
                                     <Github className="w-4 h-4" />
                                     View Repository
@@ -419,60 +443,11 @@ export default function Resume() {
                     </div>
                 </motion.section>
 
-
-                {/* GitHub Status Section */}
-                <motion.section
-                    variants={staggerContainer}
-                    initial="initial"
-                    whileInView="animate"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="space-y-8"
-                >
-                    <div className="flex items-center gap-2 mb-6">
-                        <Github className="w-6 h-6 text-teal-400" />
-                        <h2 className="text-2xl font-semibold text-slate-200">GitHub Overview</h2>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-8 items-center">
-                        <motion.div
-                            variants={fadeInUp}
-                            className="space-y-4"
-                        >
-                            <h3 className="text-xl font-medium text-slate-100">Development Activity</h3>
-                            <p className="text-slate-400 leading-relaxed">
-                                I'm actively contributing to open-source projects and working on personal projects. Check out my GitHub profile to see my coding habits and progress.
-                            </p>
-                            <div className="flex items-center gap-4">
-                                <div className="p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 flex-1">
-                                    <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Focus</p>
-                                    <p className="text-teal-400 font-mono font-bold">Backend & VR</p>
-                                </div>
-                                <div className="p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 flex-1">
-                                    <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Main Language</p>
-                                    <p className="text-teal-400 font-mono font-bold">C#</p>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            variants={fadeInUp}
-                            className="bg-slate-800/20 p-4 rounded-2xl border border-slate-700/50 backdrop-blur-sm overflow-hidden flex items-center justify-center no-print"
-                        >
-                            {/* Using GitHub Readme Stats for dynamic visualization */}
-                            <img
-                                src="https://github-readme-stats.vercel.app/api?username=JNing8431-moon&show_icons=true&theme=transparent&title_color=2dd4bf&text_color=94a3b8&icon_color=2dd4bf&border_color=334155&hide_border=true&bg_color=00000000"
-                                alt="GitHub Stats"
-                                className="w-full max-w-sm"
-                            />
-                        </motion.div>
-                    </div>
-                </motion.section>
-
                 <motion.footer
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    className="pt-24 pb-8 text-center text-slate-500 text-sm"
+                    className={`pt-24 pb-8 text-center ${isDark ? 'text-slate-500' : 'text-slate-400'} text-sm`}
                 >
                     <p>Built with Next.js & Framer Motion</p>
                 </motion.footer>
