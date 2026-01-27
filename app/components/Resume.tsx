@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle, Download } from "lucide-react";
 
 const birthYear = 2004;
@@ -9,6 +9,12 @@ const currentYear = new Date().getFullYear();
 const age = currentYear - birthYear;
 
 export default function Resume() {
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
 
     const fadeInUp = {
         initial: { opacity: 0, y: 30 },
@@ -34,6 +40,10 @@ export default function Resume() {
 
     return (
         <div className="relative min-h-screen bg-slate-900 text-slate-100 p-8 font-sans selection:bg-teal-500 selection:text-white overflow-hidden">
+            <motion.div
+                className="fixed top-0 left-0 right-0 h-1 bg-teal-500 origin-left z-[101]"
+                style={{ scaleX }}
+            />
             {/* Background Decorative Elements */}
             <div className="fixed inset-0 pointer-events-none">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-teal-500/10 blur-[120px] rounded-full animate-pulse" />
@@ -409,6 +419,54 @@ export default function Resume() {
                     </div>
                 </motion.section>
 
+
+                {/* GitHub Status Section */}
+                <motion.section
+                    variants={staggerContainer}
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="space-y-8"
+                >
+                    <div className="flex items-center gap-2 mb-6">
+                        <Github className="w-6 h-6 text-teal-400" />
+                        <h2 className="text-2xl font-semibold text-slate-200">GitHub Overview</h2>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-8 items-center">
+                        <motion.div
+                            variants={fadeInUp}
+                            className="space-y-4"
+                        >
+                            <h3 className="text-xl font-medium text-slate-100">Development Activity</h3>
+                            <p className="text-slate-400 leading-relaxed">
+                                I'm actively contributing to open-source projects and working on personal projects. Check out my GitHub profile to see my coding habits and progress.
+                            </p>
+                            <div className="flex items-center gap-4">
+                                <div className="p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 flex-1">
+                                    <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Focus</p>
+                                    <p className="text-teal-400 font-mono font-bold">Backend & VR</p>
+                                </div>
+                                <div className="p-4 bg-slate-800/40 rounded-xl border border-slate-700/50 flex-1">
+                                    <p className="text-xs text-slate-500 uppercase tracking-wider mb-1">Main Language</p>
+                                    <p className="text-teal-400 font-mono font-bold">C#</p>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            variants={fadeInUp}
+                            className="bg-slate-800/20 p-4 rounded-2xl border border-slate-700/50 backdrop-blur-sm overflow-hidden flex items-center justify-center no-print"
+                        >
+                            {/* Using GitHub Readme Stats for dynamic visualization */}
+                            <img
+                                src="https://github-readme-stats.vercel.app/api?username=JNing8431-moon&show_icons=true&theme=transparent&title_color=2dd4bf&text_color=94a3b8&icon_color=2dd4bf&border_color=334155&hide_border=true&bg_color=00000000"
+                                alt="GitHub Stats"
+                                className="w-full max-w-sm"
+                            />
+                        </motion.div>
+                    </div>
+                </motion.section>
 
                 <motion.footer
                     initial={{ opacity: 0 }}
