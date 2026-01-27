@@ -25,21 +25,44 @@ export default function Resume() {
     const staggerContainer = {
         animate: {
             transition: {
-                staggerChildren: 0.12,
-                delayChildren: 0.1
+                staggerChildren: 0.1,
+                delayChildren: 0.4 // Wait for reveal animation
             }
         }
     };
 
     return (
-        <div className="min-h-screen bg-slate-900 text-slate-100 p-8 font-sans selection:bg-teal-500 selection:text-white">
-            <div className="max-w-4xl mx-auto space-y-24">
+        <div className="relative min-h-screen bg-slate-900 text-slate-100 p-8 font-sans selection:bg-teal-500 selection:text-white overflow-hidden">
+            {/* Background Decorative Elements */}
+            <div className="fixed inset-0 pointer-events-none">
+                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-teal-500/10 blur-[120px] rounded-full animate-pulse" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500/10 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+            </div>
+
+            {/* Entrance Reveal Overlay */}
+            <motion.div
+                initial={{ scaleY: 1 }}
+                animate={{ scaleY: 0 }}
+                transition={{ duration: 0.8, ease: [0.77, 0, 0.175, 1] }}
+                style={{ originY: 0 }}
+                className="fixed inset-0 bg-teal-500 z-[100] pointer-events-none"
+            />
+            <motion.div
+                initial={{ scaleY: 1 }}
+                animate={{ scaleY: 0 }}
+                transition={{ duration: 0.8, ease: [0.77, 0, 0.175, 1], delay: 0.1 }}
+                style={{ originY: 0 }}
+                className="fixed inset-0 bg-slate-950 z-[99] pointer-events-none"
+            />
+
+            <div className="relative max-w-4xl mx-auto space-y-24 z-10">
 
                 {/* Header Section */}
                 <motion.header
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
                     className="flex flex-col md:flex-row gap-8 items-start md:items-center"
                 >
                     {/* Profile Image */}
@@ -116,7 +139,7 @@ export default function Resume() {
                     variants={staggerContainer}
                     initial="initial"
                     whileInView="animate"
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
                     className="space-y-8"
                 >
                     <div className="flex items-center gap-2 mb-6">
@@ -160,7 +183,7 @@ export default function Resume() {
                     variants={staggerContainer}
                     initial="initial"
                     whileInView="animate"
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
                 >
                     <div className="flex items-center gap-2 mb-6">
                         <Code className="w-6 h-6 text-teal-400" />
@@ -210,7 +233,7 @@ export default function Resume() {
                     variants={staggerContainer}
                     initial="initial"
                     whileInView="animate"
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
                 >
                     <div className="flex items-center gap-2 mb-6">
                         <GraduationCap className="w-6 h-6 text-teal-400" />
@@ -279,7 +302,7 @@ export default function Resume() {
                     variants={staggerContainer}
                     initial="initial"
                     whileInView="animate"
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
                 >
                     <div className="flex items-center gap-2 mb-6">
                         <MonitorPlay className="w-6 h-6 text-teal-400" />
@@ -379,7 +402,7 @@ export default function Resume() {
                 <motion.footer
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, margin: "-100px" }}
                     className="pt-24 pb-8 text-center text-slate-500 text-sm"
                 >
                     <p>Built with Next.js & Framer Motion</p>
