@@ -2,13 +2,17 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle } from "lucide-react";
+import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle, Download } from "lucide-react";
 
 const birthYear = 2004;
 const currentYear = new Date().getFullYear();
 const age = currentYear - birthYear;
 
 export default function Resume() {
+    const handleDownload = () => {
+        window.print();
+    };
+
     const fadeInUp = {
         initial: { opacity: 0, y: 30 },
         animate: {
@@ -120,7 +124,7 @@ export default function Resume() {
                             and frameworks.
                         </p>
 
-                        <div className="flex gap-4 pt-2">
+                        <div className="flex flex-wrap gap-4 pt-2 items-center">
                             <motion.a whileHover={{ scale: 1.1 }} href="https://github.com/JNing8431-moon" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
                                 <Github className="w-6 h-6 text-teal-400" />
                             </motion.a>
@@ -130,6 +134,15 @@ export default function Resume() {
                             <motion.a whileHover={{ scale: 1.1 }} href="mailto:jning8431@gmail.com" className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors">
                                 <Mail className="w-6 h-6 text-teal-400" />
                             </motion.a>
+
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                onClick={handleDownload}
+                                className="flex items-center gap-2 px-6 py-2 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-colors shadow-lg active:scale-95 no-print ml-auto md:ml-0"
+                            >
+                                <Download className="w-5 h-5" />
+                                <span className="font-medium text-sm">Download PDF</span>
+                            </motion.button>
                         </div>
                     </div>
                 </motion.header>
@@ -217,7 +230,7 @@ export default function Resume() {
                                             key={index}
                                             variants={fadeInUp}
                                             whileHover={{ scale: 1.05 }}
-                                            className="px-4 py-2 bg-teal-400/10 text-teal-300 rounded-full text-sm font-medium border border-teal-400/20 cursor-default"
+                                            className="px-4 py-2 bg-teal-400/10 text-teal-300 rounded-full text-sm font-medium border border-teal-400/20"
                                         >
                                             {skill}
                                         </motion.span>

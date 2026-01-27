@@ -1,0 +1,21 @@
+{
+    "name": "Ning's Resume",
+    "short_name": "Ning Resume",
+    "description": "Professional Resume of Ning",
+    "start_url": "/Ning-React-Resume/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#2dd4bf",
+    "icons": [
+        {
+            "src": "/Ning-React-Resume/photo.webp",
+            "sizes": "192x192",
+            "type": "image/webp"
+        },
+        {
+            "src": "/Ning-React-Resume/photo.webp",
+            "sizes": "512x512",
+            "type": "image/webp"
+        }
+    ]
+}
