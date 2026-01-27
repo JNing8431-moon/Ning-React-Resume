@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle, Download } from "lucide-react";
+import { Mail, Github, Linkedin, ExternalLink, Code, Briefcase, GraduationCap, Youtube, MonitorPlay, MapPin, MessageCircle, Download, Quote, Send, User } from "lucide-react";
 
 const birthYear = 2004;
 const currentYear = new Date().getFullYear();
@@ -409,7 +409,109 @@ export default function Resume() {
                     </div>
                 </motion.section>
 
+                <motion.section
+                    variants={staggerContainer}
+                    initial="initial"
+                    whileInView="animate"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="space-y-12"
+                >
+                    <div className="flex items-center gap-2 mb-4">
+                        <MessageCircle className="w-6 h-6 text-teal-400" />
+                        <h2 className="text-2xl font-semibold text-slate-200">Testimonials</h2>
+                    </div>
 
+                    <div className="grid md:grid-cols-2 gap-8">
+                        {[
+                            {
+                                quote: "Tan is an exceptionally proactive developer who quickly adapts to complex backend environments. Her contributions to our ERP system logic were instrumental in meeting our project milestones.",
+                                author: "Project Lead",
+                                company: "CodeX Studio",
+                                role: "Former Supervisor"
+                            },
+                            {
+                                quote: "A talented developer with a strong grasp of interactive logic. Her work on the VR Eco-Friendly Simulator demonstrated both technical skill and a keen eye for user experience.",
+                                author: "Academic Supervisor",
+                                company: "TARUMT",
+                                role: "Final Year Project"
+                            }
+                        ].map((testi, idx) => (
+                            <motion.div
+                                key={idx}
+                                variants={fadeInUp}
+                                className="relative p-8 bg-slate-800/40 rounded-2xl border border-slate-700/50 hover:border-teal-500/30 transition-all group"
+                            >
+                                <Quote className="absolute top-4 right-4 w-8 h-8 text-teal-500/10 group-hover:text-teal-500/20 transition-colors" />
+                                <p className="text-slate-300 italic mb-6 leading-relaxed relative z-10">"{testi.quote}"</p>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-teal-400">
+                                        <User className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-slate-100 font-medium text-sm">{testi.author}</h4>
+                                        <p className="text-slate-500 text-xs">{testi.role} @ {testi.company}</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.section>
+
+                {/* Contact Section */}
+                <motion.section
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="space-y-12 py-12"
+                    id="contact"
+                >
+                    <div className="text-center space-y-4">
+                        <h2 className="text-3xl font-bold text-slate-100">Get In Touch</h2>
+                        <p className="text-slate-400 max-w-lg mx-auto">
+                            I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                        </p>
+                    </div>
+
+                    <div className="max-w-2xl mx-auto p-8 bg-slate-800/30 rounded-3xl border border-slate-700/50 shadow-2xl backdrop-blur-sm">
+                        <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="text-sm font-medium text-slate-300 ml-1">Name</label>
+                                    <input
+                                        type="text"
+                                        placeholder="Full Name"
+                                        className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl focus:outline-none focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/50 transition-all text-slate-200 placeholder:text-slate-600 outline-none"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-sm font-medium text-slate-300 ml-1">Email</label>
+                                    <input
+                                        type="email"
+                                        placeholder="email@example.com"
+                                        className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl focus:outline-none focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/50 transition-all text-slate-200 placeholder:text-slate-600 outline-none"
+                                    />
+                                </div>
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium text-slate-300 ml-1">Message</label>
+                                <textarea
+                                    rows={4}
+                                    placeholder="Your message..."
+                                    className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-xl focus:outline-none focus:border-teal-500/50 focus:ring-1 focus:ring-teal-500/50 transition-all text-slate-200 placeholder:text-slate-600 resize-none outline-none"
+                                />
+                            </div>
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="w-full py-4 bg-teal-500 hover:bg-teal-600 text-white rounded-xl font-semibold shadow-lg shadow-teal-500/20 flex items-center justify-center gap-2 transition-colors no-print"
+                            >
+                                <Send className="w-5 h-5" />
+                                Send Message
+                            </motion.button>
+                        </form>
+                    </div>
+                </motion.section>
                 <motion.footer
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
