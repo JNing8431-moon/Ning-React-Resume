@@ -196,6 +196,7 @@ export default function Resume() {
                         {
                             role: "Software Engineer Intern",
                             company: "CodeX Studio",
+                            link: "https://codexstudio.com.my/#",
                             period: "Jan 2026 – Jul 2026",
                             description:
                                 "Currently involved in the development of an ERP system, contributing to backend logic, database-related features, and system modules. Collaborate with team members to implement business workflows and enhance system functionality."
@@ -203,6 +204,7 @@ export default function Resume() {
                         {
                             role: "Backend Developer Intern",
                             company: "Aspert Innovations Sdn. Bhd.",
+                            link: "https://aspert.com.my/about-us/",
                             period: "Nov 2023 – Jan 2024",
                             description:
                                 "Participated in backend system enhancement and migration projects. Gained hands-on experience using Python and SQL, migrated Django serializer files to FastAPI controllers, designed RESTful APIs, and collaborated with senior developers on production-level backend systems."
@@ -217,7 +219,15 @@ export default function Resume() {
                                 <h3 className={`text-xl font-medium ${isDark ? 'text-slate-100' : 'text-slate-900'} group-hover:text-teal-400 transition-colors`}>{job.role}</h3>
                                 <span className="text-sm font-mono text-slate-500">{job.period}</span>
                             </div>
-                            <p className={`text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'} mb-2`}>{job.company}</p>
+                            <p className={`text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'} mb-2`}>
+                                {job.link ? (
+                                    <a href={job.link} target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors underline decoration-teal-400/30 underline-offset-4">
+                                        {job.company}
+                                    </a>
+                                ) : (
+                                    job.company
+                                )}
+                            </p>
                             <p className={`${isDark ? 'text-slate-400' : 'text-slate-600'} leading-relaxed`}>{job.description}</p>
                         </motion.div>
                     ))}
