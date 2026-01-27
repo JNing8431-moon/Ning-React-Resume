@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion, useSpring, useMotionValue } from "framer-motion";
-import { MousePointer2 } from "lucide-react";
+import { Star } from "lucide-react";
 
 export default function CustomCursor() {
     const [isHovered, setIsHovered] = useState(false);
@@ -56,12 +56,12 @@ export default function CustomCursor() {
                 style={{
                     x: cursorX,
                     y: cursorY,
-                    translateX: "-20%", // Offset to center the tip of the pointer icon roughly
-                    translateY: "-20%",
+                    translateX: "-50%",
+                    translateY: "-50%",
                     opacity: isVisible ? 1 : 0,
                 }}
             >
-                <MousePointer2
+                <Star
                     size={24}
                     fill="currentColor"
                     className="drop-shadow-[0_0_8px_rgba(45,212,191,0.5)]"
