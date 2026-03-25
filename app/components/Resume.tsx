@@ -122,8 +122,8 @@ export default function Resume() {
 
                     <div className="flex-1 space-y-4">
                         <div>
-                            <h1 className={`text-5xl font-bold tracking-tight text-teal-400`}>Ning</h1>
-                            <p className={`text-xl ${isDark ? 'text-slate-400' : 'text-slate-600'} mt-2`}>Software Engineering Intern | Backend & VR / Game Development</p>
+                            <h1 className={`text-5xl font-bold tracking-tight text-teal-400`}>Tan Jia Ning</h1>
+                            <p className={`text-xl ${isDark ? 'text-slate-400' : 'text-slate-600'} mt-2`}>Game Design Intern | Backend & VR / Game Development</p>
                         </div>
 
                         <div className="flex flex-wrap gap-4 text-sm">
