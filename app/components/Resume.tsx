@@ -176,8 +176,8 @@ export default function Resume() {
 
                             <motion.a
                                 whileHover={{ scale: 1.05 }}
-                                href="/Ning-React-Resume/RESUME_TAN JIA NING.pdf"
-                                download="RESUME_TAN JIA NING.pdf"
+                                href="/Ning-React-Resume/RESUME_INTERNSHIP_TAN JIA NING.pdf"
+                                download="RESUME_INTERNSHIP_TAN JIA NING.pdf"
                                 className="flex items-center gap-2 px-6 py-2 bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-colors shadow-lg active:scale-95 no-print ml-auto md:ml-0"
                             >
                                 <Download className="w-5 h-5" />
